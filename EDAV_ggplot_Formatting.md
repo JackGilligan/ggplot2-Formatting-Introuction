@@ -47,8 +47,7 @@ geom_bar(stat = "identity", fill = "red")+
 ggtitle("US States by Area")
 plt
 ```
-
-<img src="ggplot2-Formatting-Introduction/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
 ...But it's not exactly publishable: the x-axis values are too bunched up to read, the y-axis values are in scientific notation and don't indicate units, the title is small and off-center. And worst of all, it looks PLAIN.
 
@@ -65,8 +64,7 @@ xlab("State")+
 ylab("Area (sq mi)")
 plt
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-3-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 ### 3. Formatting Using Theme()
 
@@ -82,8 +80,7 @@ Let's rotate state names so they're vertical; that is, 270 degrees counterclockw
 plt2 <- plt + theme(axis.text.x = element_text(angle = 270))
 plt2
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-4-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 It looks better, but now state names aren't quite lined up with their bars.
 
@@ -93,8 +90,7 @@ We can shift the names over using the 'vjust' sub-argument, which takes values i
 plt3 <- plt + theme(axis.text.x = element_text(angle = 270, vjust = 0.45))
 plt3
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-5-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 While we're at it, let's set 'hjust' = 0 which will "left" align all the state names:
 
@@ -102,8 +98,7 @@ While we're at it, let's set 'hjust' = 0 which will "left" align all the state n
 plt4 <- plt + theme(axis.text.x = element_text(angle = 270, vjust = 0.45, hjust = 0))
 plt4
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-6-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 And let's drop the font size down from the default (8?) to 7 for a little more room:
 
@@ -111,8 +106,7 @@ And let's drop the font size down from the default (8?) to 7 for a little more r
 plt5 <- plt + theme(axis.text.x = element_text(angle = 270, vjust = 0.45, hjust = 0, size = 7))
 plt5
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-7-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 The last thing that really needs to be fixed before tackling the scientific notation in the y-axis values is the title: We will center align it and set the font size to 18:
 
@@ -122,10 +116,9 @@ axis.text.x = element_text(angle = 270, vjust = 0.45, hjust = 0, size = 7),
 plot.title = element_text(hjust = 0.5, size = 18))
 plt6
 ```
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-8-1.png)
-
-Great - except for the scientific notation, this plot is clean and readable.
+Great! Except for the scientific notation, this plot is clean and readable.
 
 But, we can continue adding theme() arguments to create an appropriately patriotic aesthetic for our US States data. And we will do just that:
 
@@ -142,8 +135,7 @@ axis.ticks = element_line(colour = "white")
 )
 plt7
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-9-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 We can save this theme to a variable to avoid having to type it out (or copy and paste it) multiple times for use in multiple plots.
 
@@ -172,8 +164,7 @@ My_Theme +
 scale_y_continuous(labels = function(x) format(x, scientific = FALSE))
 plt8
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-11-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 An alternative solution is to replace our original plot 'plt' with one that uses "Area/1000" as its y-aesthetic instead of "Area". Simply dividing by 1000 has the additional benefit of dropping three unsightly zeros from each of our y-axis values:
 
@@ -188,8 +179,7 @@ plt9 <- plt0 +
 My_Theme 
 plt9
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-12-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 The scale\_y\_continuous function gives us complete control over any tickmarks on axes that reflect continuous variables.
 
@@ -201,8 +191,7 @@ My_Theme +
 scale_y_continuous(breaks=seq(0,600,100))
 plt10
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-13-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 We may want something slightly more complicated (and not necessarily recommended), like tickmarks evenly spaced every 50,000 square miles until 250,000 (which is about the area of Texas), and then just one more tickmark indicating the exact max area of the dataset (Alaska):
 
@@ -213,5 +202,4 @@ scale_y_continuous(labels = function(x) format(x, scientific = FALSE), breaks=c(
                                                                   as.integer(max(state_areas$Area/1000))))
 plt11
 ```
-
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-14-1.png)
+<img src="https://github.com/JackGilligan/ggplot2-Formatting-Introduction/blob/master/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
