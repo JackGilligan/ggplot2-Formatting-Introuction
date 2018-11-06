@@ -48,7 +48,7 @@ ggtitle("US States by Area")
 plt
 ```
 
-![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](EDAV_CC_files/figure-markdown_github/unnamed-chunk-2-1.png?raw=true)
 
 ...But it's not exactly publishable: the x-axis values are too bunched up to read, the y-axis values are in scientific notation and don't indicate units, the title is small and off-center. And worst of all, it looks PLAIN.
 
